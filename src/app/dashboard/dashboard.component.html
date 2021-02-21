@@ -1,0 +1,23 @@
+<h2>Dashboard component</h2>
+<div class="row pt-4">
+  <div class="col-md-6 ml-sm-auto d-none d-md-block bg-light">
+    <div id="svg">
+      <h4>Rect inside dashboard component  {{check()}}</h4>
+      <button class="btn btn-sm btn-outline-primary" (click)="changeColor()">Change color</button>
+      <svg width="400" height="400">
+        <rect x="20" y="20" width="250" height="250" [ngStyle]="{'fill': color ? 'blue' : 'red'}">
+        </rect>
+        Sorry, your browser does not support inline SVG.
+      </svg>
+    </div>
+  </div>
+
+  <div class="col-md-6 ml-sm-auto d-none d-md-block bg-light">
+    <div class="p-2" style="border: 1px steelblue solid;">
+      <app-chart></app-chart>
+    </div>
+    <div class="p-2 mt-4" style="border: 1px steelblue solid;">
+      <app-list></app-list>
+    </div>
+  </div>
+</div>
