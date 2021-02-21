@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { Event } from '../shared/models/event';
 
@@ -12,15 +12,17 @@ export class EventsService {
   private subject: Subject<Event>;
   private observable: Observable<Event>;
 
-  constructor() {
+  constructor(private _ngZone: NgZone) {
     this.subject = new Subject<Event>();
     this.observable = this.subject.asObservable();
 
-    setInterval(() => {
-      const event = this.generateEvent();
-      console.log('Event generated every 30 seconds');
-      this.subject.next(event);
-    }, 30 * 1000);
+    this._ngZone.runOutsideAngular(() => {
+      setInterval(() => {
+        const event = this.generateEvent();
+        console.log('Event generated every 30 seconds');
+        this.subject.next(event);
+      }, 30 * 1000);
+    });
   }
 
   public getEvents(): Observable<Event> {
