@@ -1,4 +1,5 @@
 import { AfterViewChecked, Component, OnInit } from '@angular/core';
+import { LoggerService } from '../services/logger.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,7 +10,7 @@ export class DashboardComponent implements OnInit, AfterViewChecked {
 
   public color: boolean;
 
-  constructor() {
+  constructor(private _logger: LoggerService) {
     this.color = true;
   }
 
@@ -17,7 +18,7 @@ export class DashboardComponent implements OnInit, AfterViewChecked {
   }
 
   ngAfterViewChecked() {
-    console.log('CD: Dashboard');
+    this._logger.logAfterViewInit(DashboardComponent.name);
   }
 
   public changeColor(): void {
@@ -25,6 +26,6 @@ export class DashboardComponent implements OnInit, AfterViewChecked {
   }
 
   public check(): void {
-    console.log('Checked: Dashboard')
+    this._logger.logCheckHTML(DashboardComponent.name);
   }
 }

@@ -1,4 +1,5 @@
 import { AfterViewChecked, Component, Input, OnInit } from '@angular/core';
+import { LoggerService } from 'src/app/services/logger.service';
 
 @Component({
   selector: 'app-list-item',
@@ -9,13 +10,17 @@ export class ListItemComponent implements OnInit, AfterViewChecked {
 
   @Input() critic: number;
 
-  constructor() { }
+  constructor(private _logger: LoggerService) { }
 
   ngOnInit() {
   }
 
   ngAfterViewChecked() {
-    console.log('CD: List item');
+    this._logger.logAfterViewInit(ListItemComponent.name);
+  }
+
+  public check(): void {
+    this._logger.logCheckHTML(ListItemComponent.name);
   }
 
 }

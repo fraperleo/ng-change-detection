@@ -1,5 +1,6 @@
 import { AfterViewChecked, Component, OnInit } from '@angular/core';
 import { EventsService } from 'src/app/services/events.service';
+import { LoggerService } from 'src/app/services/logger.service';
 import { Event } from 'src/app/shared/models/event';
 
 @Component({
@@ -11,7 +12,7 @@ export class ListComponent implements OnInit, AfterViewChecked {
 
   public array: Event[];
 
-  constructor(private _eventService: EventsService) {
+  constructor(private _eventService: EventsService, private _logger: LoggerService) {
     this.array = [
       {id: 0, name: 'name0', critic: 0},
       {id: 1, name: 'name1', critic: 1},
@@ -30,7 +31,11 @@ export class ListComponent implements OnInit, AfterViewChecked {
   }
 
   ngAfterViewChecked() {
-    console.log('CD: List');
+    this._logger.logAfterViewInit(ListComponent.name);
+  }
+
+  public check(): void {
+    this._logger.logCheckHTML(ListComponent.name);
   }
 
   public reverse(): void {

@@ -1,16 +1,18 @@
-import { AfterViewChecked, Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewChecked, ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { LoggerService } from 'src/app/services/logger.service';
 
 @Component({
   selector: 'app-chart',
   templateUrl: './chart.component.html',
-  styleUrls: ['./chart.component.scss']
+  styleUrls: ['./chart.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ChartComponent implements OnInit, OnDestroy, AfterViewChecked {
 
   public counter: number;
   private interval;
 
-  constructor() {
+  constructor(private _logger: LoggerService) {
     this.counter = 0;
   }
 
@@ -18,7 +20,7 @@ export class ChartComponent implements OnInit, OnDestroy, AfterViewChecked {
   }
 
   ngAfterViewChecked() {
-    console.log('CD: Chart');
+    this._logger.logAfterViewInit(ChartComponent.name);
   }
 
   public startCounter(): void {
@@ -29,6 +31,10 @@ export class ChartComponent implements OnInit, OnDestroy, AfterViewChecked {
 
   public stopCounter(): void {
     clearInterval(this.interval);
+  }
+
+  public check(): void {
+    this._logger.logCheckHTML(ChartComponent.name);
   }
 
   ngOnDestroy() {
