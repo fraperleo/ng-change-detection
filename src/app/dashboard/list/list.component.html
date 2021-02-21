@@ -11,7 +11,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of array">
+        <tr *ngFor="let item of array trackBy: itemByID">
           <td>{{item.id}}</td>
           <td>{{item.name}}</td>
           <td>{{item.critic}}</td>
