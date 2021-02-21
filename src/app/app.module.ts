@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ChartComponent } from './dashboard/chart/chart.component';
 import { ListComponent } from './dashboard/list/list.component';
+import { ListItemComponent } from './dashboard/list/list-item/list-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     ChartComponent,
-    ListComponent
+    ListComponent,
+    ListItemComponent
   ],
   imports: [
     BrowserModule,

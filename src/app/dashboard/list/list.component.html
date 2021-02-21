@@ -7,6 +7,7 @@
           <th>#</th>
           <th>Name</th>
           <th>Critic</th>
+          <th>Options</th>
         </tr>
       </thead>
       <tbody>
@@ -14,6 +15,7 @@
           <td>{{item.id}}</td>
           <td>{{item.name}}</td>
           <td>{{item.critic}}</td>
+          <td><app-list-item [critic]="item.critic"></app-list-item></td>
         </tr>
       </tbody>
     </table>
