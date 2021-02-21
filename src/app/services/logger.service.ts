@@ -8,7 +8,7 @@ export class LoggerService {
   constructor() { }
 
   public logAfterViewInit(componentName: string): void {
-    console.log(`CD: ${componentName}`);
+    // console.log(`CD: ${componentName}`);
   }
 
   public logCheckHTML(componentName: string): void {
