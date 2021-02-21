@@ -1,11 +1,10 @@
-import { AfterViewChecked, ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewChecked, Component, OnDestroy, OnInit } from '@angular/core';
 import { LoggerService } from 'src/app/services/logger.service';
 
 @Component({
   selector: 'app-chart',
   templateUrl: './chart.component.html',
-  styleUrls: ['./chart.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./chart.component.scss']
 })
 export class ChartComponent implements OnInit, OnDestroy, AfterViewChecked {
 
